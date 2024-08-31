@@ -17,3 +17,15 @@ You can install these libraries using the following commands:
 pip install web3
 pip install requests
 pip install json
+```
+# Usage
+Configuration: Define your wallets via the `private_keys` and `my_addresses` variables.
+Stake and Unstake: The script monitors the staking transactions made to your addresses and automatically stakes or unstakes any unbalanced transactions.
+Continuous Monitoring: The script checks your wallets at regular intervals and examines whether there are any new transactions in each cycle.
+# Important Notes
+Security: Ensure that you store your private keys securely. The private keys provided in this script are for example purposes only and should not be used in place of your actual keys.
+Customization: The script is configured to work with TrustDrops, a specific contract on the Mande network. If you wish to work with a different contract, you may need to change the ABI and addresses.
+
+
+
+
