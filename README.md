@@ -14,9 +14,9 @@ You will need the following Python libraries to run the project:
 You can install these libraries using the following commands:
 
 ```bash
-pip install web3
+pip install web3==6.11.3
 pip install requests
-pip install json
+
 ```
 # Usage
 Configuration: Define your wallets via the `private_keys` and `my_addresses` variables.
