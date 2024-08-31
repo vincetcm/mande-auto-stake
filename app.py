@@ -107,7 +107,7 @@ def getUnreturnedStakes(i):
         stakesMap = {}
         receivedStakesMap = {}
 
-        # Sayfalama kullanarak tüm stake'leri al
+        
         skip = 0
         while True:
             stakesReq['query'] = f"query MyStakesQuery($address: String!) {{\n  stakes(first:1000, skip:{skip}, where: {{staker_: {{id: $address}}}}) {{\n    amount\n    credScore\n    candidate {{\n      id\n      __typename\n    }}\n    __typename\n  }}\n}}"
@@ -128,7 +128,7 @@ def getUnreturnedStakes(i):
 
             skip += 1000
 
-        # Sayfalama kullanarak tüm alınan stake'leri al
+        
         skip = 0
         while True:
             receivedStakesReq['query'] = f"query ReceivedStakesQuery($address: String!) {{\n  stakes(first:1000, skip:{skip}, where: {{candidate_: {{id: $address}}}}) {{\n    amount\n    credScore\n    staker {{\n      id\n      __typename\n    }}\n    __typename\n  }}\n}}"
@@ -149,7 +149,7 @@ def getUnreturnedStakes(i):
 
             skip += 1000
 
-        # Stake ve alınan stake'leri karşılaştır
+        
         unreturnedStakes = {}
         for address in set(list(stakesMap.keys()) + list(receivedStakesMap.keys())):
             if address in my_addresses:
@@ -199,11 +199,11 @@ def manage_stake_addresses():
                         if unstake(i, key, web3.to_wei(-amount, 'ether')):
                             processed_addresses.add(key)
             time.sleep(30)
-            processed_addresses.clear()  # Clear the processed addresses after each loop
+            processed_addresses.clear()  
             print_status()
         except Exception as e:
             print(f"\nError in manage_stake_addresses loop: {e}")
-            time.sleep(30)  # Bekleyip yeniden dene
+            time.sleep(30)  
 
 if __name__ == "__main__":
     print_status()
